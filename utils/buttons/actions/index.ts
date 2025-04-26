@@ -1,22 +1,22 @@
 import { Bot } from 'grammy'
-
-import buttons from "../buttons";
-import * as buttonsTypes from "../buttonsTypes";
-
-import {handleCloseInline} from './inlineActions'
-import {handleCloseReply, handleFindNotesByTag, handleShowLastFive} from './replyActions'
+import Inline from './inline'
+import Reply from './reply'
 
 export default class HandlersKeyboard {
-    constructor(private bot: Bot) {}
+    private inline: Inline;
+    private reply: Reply;
 
-    registerHandlersKeyboard() {
+    constructor(bot: Bot) {
+        this.inline = new Inline(bot);
+        this.reply = new Reply(bot);
+    }
+
+    registerKeyboardHooks() {
         //reply keyboards
-        this.bot.hears(buttons[buttonsTypes.SERVICES_CLOSE_MENU], handleCloseReply)
-        this.bot.hears(buttons[buttonsTypes.SHOW_LAST_FIVE], handleShowLastFive)
-        this.bot.hears(buttons[buttonsTypes.FIND_NOTES_BY_TAG], handleFindNotesByTag)
+        this.reply.startHook()
+        this.reply.actionNotesHook()
 
         //inline keyboards
-        this.bot.callbackQuery(buttonsTypes.SERVICES_CLOSE_MENU, handleCloseInline)
-        this.bot.callbackQuery(buttonsTypes.SHOW_LAST_FIVE, handleShowLastFive)
+        this.inline.messageHook()
     }
 }
