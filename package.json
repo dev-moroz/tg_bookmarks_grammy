@@ -6,13 +6,15 @@
     "typescript": "^5.8.3"
   },
   "dependencies": {
+    "@grammyjs/files": "^1.1.1",
     "@loskir/grammy-markup": "^1.1.0",
+    "@notionhq/client": "^2.3.0",
     "dotenv": "^16.5.0",
     "grammy": "^1.36.1"
   },
   "scripts": {
     "build": "npm run convert-ts",
-    "dev-server": "tsc-watch --noClear -p ./tsconfig.json --onSuccess 'node ./bot.js'",
+    "dev-server": "tsc-watch --noClear -p ./tsconfig.json --onSuccess 'node src/bot.js'",
     "convert-ts": "npx tsc"
   }
 }

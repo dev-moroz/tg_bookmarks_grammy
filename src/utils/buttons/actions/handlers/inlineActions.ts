@@ -7,7 +7,7 @@ export async function handleCloseInline(ctx: Context) {
     } catch (error: any) {
         const msg = error?.description ?? error?.message ?? ''
 
-        // типичная нефатальная ошибка: клавиатура уже удалена
+        // typical unfiltered message: keyboard already deleted
         const isNotModified = msg.includes('message is not modified')
 
         if (!isNotModified) {
