@@ -1,21 +1,6 @@
 import { Context } from 'grammy';
-import type { Message, Chat, User, File } from 'grammy/types';
 import type { Result, AlbumRecord, ParsedForward } from './types';
-
-// TODO: replace to isForwardMessage from helper
-function isForwardFromChat(
-  message: Message,
-): message is Message & { forward_from_chat: Chat; forward_from_message_id: number } {
-  return (
-    'forward_from_chat' in message &&
-    'forward_from_message_id' in message &&
-    Boolean(message.forward_from_chat && message.forward_from_message_id)
-  );
-}
-
-function isForwardFromUser(message: Message): message is Message & { forward_from: User } {
-  return 'forward_from' in message && Boolean(message.forward_from);
-}
+import { isForwardFromChat, isForwardFromUser } from '../../helpers/isForwardMessage';
 
 const albumStore = new Map<string, AlbumRecord>();
 
