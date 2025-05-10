@@ -1,5 +1,3 @@
-import {deleteMessage} from "./deleteMessage";
+import { deleteMessage } from './deleteMessage';
 
-export {
-    deleteMessage,
-}
+export { deleteMessage };

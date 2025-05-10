@@ -1,7 +1,7 @@
 export type CreateParams = [
-    title: string,
-    text: string,
-    tags?: string[],
-    urls?: string[],
-    checkbox?: boolean
+  title: string,
+  text: string,
+  tags?: string[],
+  urls?: string[],
+  checkbox?: boolean,
 ];

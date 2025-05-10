@@ -1,9 +1,18 @@
 {
-  "devDependencies": {
-    "@types/node": "^22.14.1",
-    "nodemon": "^3.1.9",
-    "tsc-watch": "^6.2.1",
-    "typescript": "^5.8.3"
+  "scripts": {
+    "build": "npm run convert-ts",
+    "dev-server": "tsc-watch --noClear -p ./tsconfig.json --onSuccess 'node dist/bot.js'",
+    "convert-ts": "npx tsc",
+    "prepare": "husky install",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "format": "prettier --write ."
+  },
+  "lint-staged": {
+    "**/*.ts": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "@grammyjs/files": "^1.1.1",
@@ -12,9 +21,18 @@
     "dotenv": "^16.5.0",
     "grammy": "^1.36.1"
   },
-  "scripts": {
-    "build": "npm run convert-ts",
-    "dev-server": "tsc-watch --noClear -p ./tsconfig.json --onSuccess 'node src/bot.js'",
-    "convert-ts": "npx tsc"
+  "devDependencies": {
+    "@types/node": "^22.14.1",
+    "@typescript-eslint/eslint-plugin": "^8.32.0",
+    "@typescript-eslint/parser": "^8.32.0",
+    "eslint": "^9.26.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.2",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.4.0",
+    "nodemon": "^3.1.9",
+    "prettier": "^3.5.3",
+    "tsc-watch": "^6.2.1",
+    "typescript": "^5.8.3"
   }
 }
